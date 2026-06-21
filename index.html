@@ -424,6 +424,15 @@ display: none;
     transition:.3s ease;
     font-weight:500;
 }
+.book-gallery{
+    cursor:grab;
+    user-select:none;
+}
+
+.book-gallery img{
+    pointer-events:none;
+    user-select:none;
+}
 </style>
 </head>
 
@@ -1048,6 +1057,43 @@ document.querySelectorAll('.book-gallery').forEach(gallery => {
         if (hint) hint.style.opacity = '0';
     }, { once: true });
 
+});
+document.querySelectorAll('.book-gallery').forEach(slider => {
+
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    slider.addEventListener('mousedown', (e) => {
+        isDown = true;
+        slider.style.cursor = 'grabbing';
+
+        startX = e.pageX - slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
+    });
+
+    slider.addEventListener('mouseleave', () => {
+        isDown = false;
+        slider.style.cursor = 'grab';
+    });
+
+    slider.addEventListener('mouseup', () => {
+        isDown = false;
+        slider.style.cursor = 'grab';
+    });
+
+    slider.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+
+        e.preventDefault();
+
+        const x = e.pageX - slider.offsetLeft;
+        const walk = (x - startX) * 1.5;
+
+        slider.scrollLeft = scrollLeft - walk;
+    });
+
+    slider.style.cursor = 'grab';
 });
 </script>
 
