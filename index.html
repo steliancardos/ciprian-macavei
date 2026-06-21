@@ -433,6 +433,26 @@ display: none;
     pointer-events:none;
     user-select:none;
 }
+.book-dots{
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    margin-top:16px;
+}
+
+.book-dot{
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:rgba(255,255,255,.25);
+    border:1px solid rgba(255,255,255,.4);
+    transition:.25s ease;
+}
+
+.book-dot.active{
+    background:white;
+    transform:scale(1.2);
+}
 </style>
 </head>
 
@@ -697,7 +717,7 @@ display: none;
         </div>
 
     </div>
-
+<div class="book-dots"></div>
 </div>
 
         </div>
@@ -887,7 +907,7 @@ display: none;
         </div>
 
     </div>
-
+<div class="book-dots"></div>
 </div>
 
         </div>
@@ -1052,10 +1072,6 @@ document.querySelectorAll('.book-gallery').forEach(gallery => {
 
         currentPage.textContent = page;
     });
-
-    gallery.addEventListener('touchstart', () => {
-        if (hint) hint.style.opacity = '0';
-    }, { once: true });
 
 });
 document.querySelectorAll('.book-gallery').forEach(slider => {
