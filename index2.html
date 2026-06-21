@@ -60,42 +60,7 @@ footer{
     /* =========================
        NAVIGATION
     ========================== */
-/* =========================
-   PDF VIEWER
-========================== */
 
-.pdf-viewer{
-  width:100%;
-  overflow:hidden;
-  border-radius:20px;
-  border:1px solid var(--border);
-  background:var(--bg);
-  box-shadow:0 8px 30px rgba(0,0,0,0.04);
-}
-
-.pdf-viewer iframe{
-  width:100%;
-  height:800px;
-  border:none;
-  display:block;
-}
-
-/* Hover effect similar to buttons/cards */
-.pdf-viewer{
-  transition:transform .3s ease, box-shadow .3s ease;
-}
-
-.pdf-viewer:hover{
-  transform:translateY(-3px);
-  box-shadow:0 12px 40px rgba(0,0,0,0.08);
-}
-@media(max-width:900px){
-
-  .pdf-viewer iframe{
-    height:600px;
-  }
-
-}
     header{
       position:fixed;
       top:0;
@@ -199,11 +164,11 @@ footer{
     ========================== */
 
     section{
-      padding: 0.7em 0;
+      padding:120px 0;
     }
 
     .section-header{
-      margin-bottom:1.5rem;
+      margin-bottom:4rem;
     }
 
     .eyebrow{
@@ -409,21 +374,8 @@ footer{
 .lang-switch{
 padding:8px 12px;border-radius:999px;border:1px solid var(--border);
 background:white;font-size:0.9rem;
-display: none;
 }
-.btn{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    padding:12px 24px;
-    border-radius:999px;
-    border:none;
-    background:var(--text);
-    color:white;
-    cursor:pointer;
-    transition:.3s ease;
-    font-weight:500;
-}
+
 </style>
 </head>
 
@@ -448,12 +400,10 @@ display: none;
   <a href="#contact" data-i18n="nav_contact">Contact</a>
 </nav>
 
-      
-      <div class="hero-actions">
-       <a href="#menu" class="btn">
-			<span data-i18n="view_menu">Vezi meniul</span>
-		</a>
-      </div>
+      <select id="langSwitcher" class="lang-switch">
+		<option value="ro" selected>RO</option>
+		<option value="en">EN</option>
+	  </select>
 
     </div>
   </header>
@@ -484,406 +434,6 @@ display: none;
       <img src="./hero.jpg" alt="">
     </div>
 
-  </section>
-
-  <!-- =========================
-       MENU
-  ========================== -->
-
-  <section id="menu">
-
-    <div class="container">
-
-      <div class="section-header">
-
-        <div class="eyebrow">
-          Menu
-        </div>
-
-      </div>
-
-      <div class="menu-grid">
-
-        <div class="menu-card">
-
-          <h3>Meniu</h3>
-
-          <div class="menu-item">
-           <div class="menu-top">
-
-<style>
-.book-gallery{
-    width:100%;
-    height:75vh;
-    overflow-x:auto;
-    overflow-y:hidden;
-    display:flex;
-    scroll-snap-type:x mandatory;
-    scroll-behavior:smooth;
-    -webkit-overflow-scrolling:touch;
-    border-radius:20px;
-    position:relative;
-    scrollbar-width:none;
-    background:#000;
-}
-
-.book-gallery::-webkit-scrollbar{
-    display:none;
-}
-
-.book-slide{
-    flex:0 0 100%;
-    width:100%;
-    height:100%;
-    scroll-snap-align:start;
-}
-
-.book-slide img{
-    width:100%;
-    height:100%;
-    object-fit:contain;
-    background:#000;
-}
-
-.book-page-indicator{
-    position:absolute;
-    top:15px;
-    right:15px;
-    z-index:10;
-    background:rgba(0,0,0,.65);
-    color:#fff;
-    padding:8px 14px;
-    border-radius:999px;
-    font-size:14px;
-    font-family:'Inter',sans-serif;
-}
-
-.book-swipe-hint{
-    position:absolute;
-    bottom:20px;
-    left:50%;
-    transform:translateX(-50%);
-
-    width:90%;
-    max-width:320px;
-
-    background:rgba(0,0,0,.7);
-    color:#fff;
-
-    padding:8px 12px;
-    border-radius:999px;
-
-    font-size:clamp(10px,2.8vw,14px);
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
-
-    text-align:center;
-    z-index:10;
-    pointer-events:none;
-}
-
-.book-left-fade,
-.book-right-fade{
-    position:absolute;
-    top:0;
-    width:40px;
-    height:100%;
-    pointer-events:none;
-    z-index:5;
-}
-
-.book-left-fade{
-    left:0;
-    background:linear-gradient(
-        to right,
-        rgba(255,255,255,.15),
-        transparent
-    );
-}
-
-.book-right-fade{
-    right:0;
-    background:linear-gradient(
-        to left,
-        rgba(255,255,255,.15),
-        transparent
-    );
-}
-
-@keyframes swipeDemo{
-    0%,100%{
-        transform:translateX(-50%);
-    }
-    25%{
-        transform:translateX(-65%);
-    }
-    75%{
-        transform:translateX(-35%);
-    }
-}
-
-@keyframes fadeOut{
-    to{
-        opacity:0;
-        visibility:hidden;
-    }
-}
-
-@media(max-width:900px){
-    .book-gallery{
-        height:70vh;
-    }
-}
-</style>
-
-<div style="position:relative;width:100%;">
-
-    <div class="book-page-indicator">
-        <span class="currentPage">1</span> /
-        <span class="totalPages">8</span>
-    </div>
-
-    <div class="book-swipe-hint">
-        👈 Glisează 👉
-    </div>
-
-    <div class="book-left-fade"></div>
-    <div class="book-right-fade"></div>
-
-    <div class="book-gallery">
-
-        <div class="book-slide">
-            <img src="./menu/page_1.png" alt="Menu Page 1">
-        </div>
-
-        <div class="book-slide">
-            <img src="./menu/page_2.png" alt="Menu Page 2">
-        </div>
-
-        <div class="book-slide">
-            <img src="./menu/page_3.png" alt="Menu Page 3">
-        </div>
-
-        <div class="book-slide">
-            <img src="./menu/page_4.png" alt="Menu Page 4">
-        </div>
-
-        <div class="book-slide">
-            <img src="./menu/page_5.png" alt="Menu Page 5">
-        </div>
-
-        <div class="book-slide">
-            <img src="./menu/page_6.png" alt="Menu Page 6">
-        </div>
-
-        <div class="book-slide">
-            <img src="./menu/page_7.png" alt="Menu Page 7">
-        </div>
-
-        <div class="book-slide">
-            <img src="./menu/page_8.png" alt="Menu Page 8">
-        </div>
-
-    </div>
-
-</div>
-
-        </div>
-
-    </div>
-</div>
-
- <div class="menu-card">
-
-          <h3>Wine Menu</h3>
-
-          <div class="menu-item">
-           <div class="menu-top">
-
-<style>
-.book-gallery{
-    width:100%;
-    height:75vh;
-    overflow-x:auto;
-    overflow-y:hidden;
-    display:flex;
-    scroll-snap-type:x mandatory;
-    scroll-behavior:smooth;
-    -webkit-overflow-scrolling:touch;
-    border-radius:20px;
-    position:relative;
-    scrollbar-width:none;
-    background:#000;
-}
-
-.book-gallery::-webkit-scrollbar{
-    display:none;
-}
-
-.book-slide{
-    flex:0 0 100%;
-    width:100%;
-    height:100%;
-    scroll-snap-align:start;
-}
-
-.book-slide img{
-    width:100%;
-    height:100%;
-    object-fit:contain;
-    background:#000;
-}
-
-.book-page-indicator{
-    position:absolute;
-    top:15px;
-    right:15px;
-    z-index:10;
-    background:rgba(0,0,0,.65);
-    color:#fff;
-    padding:8px 14px;
-    border-radius:999px;
-    font-size:14px;
-    font-family:'Inter',sans-serif;
-}
-
-.book-swipe-hint{
-    position:absolute;
-    bottom:20px;
-    left:50%;
-    transform:translateX(-50%);
-
-    width:90%;
-    max-width:320px;
-
-    background:rgba(0,0,0,.7);
-    color:#fff;
-
-    padding:8px 12px;
-    border-radius:999px;
-
-    font-size:clamp(10px,2.8vw,14px);
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
-
-    text-align:center;
-    z-index:10;
-    pointer-events:none;
-}
-
-.book-left-fade,
-.book-right-fade{
-    position:absolute;
-    top:0;
-    width:40px;
-    height:100%;
-    pointer-events:none;
-    z-index:5;
-}
-
-.book-left-fade{
-    left:0;
-    background:linear-gradient(
-        to right,
-        rgba(255,255,255,.15),
-        transparent
-    );
-}
-
-.book-right-fade{
-    right:0;
-    background:linear-gradient(
-        to left,
-        rgba(255,255,255,.15),
-        transparent
-    );
-}
-
-@keyframes swipeDemo{
-    0%,100%{
-        transform:translateX(-50%);
-    }
-    25%{
-        transform:translateX(-65%);
-    }
-    75%{
-        transform:translateX(-35%);
-    }
-}
-
-@keyframes fadeOut{
-    to{
-        opacity:0;
-        visibility:hidden;
-    }
-}
-
-@media(max-width:900px){
-    .book-gallery{
-        height:70vh;
-    }
-}
-</style>
-
-<div style="position:relative;width:100%;">
-
-    <div class="book-page-indicator">
-        <span class="currentPage">1</span> /
-        <span class="totalPages">8</span>
-    </div>
-
-    <div class="book-swipe-hint">
-        👈 Glisează 👉
-    </div>
-
-    <div class="book-left-fade"></div>
-    <div class="book-right-fade"></div>
-
-    <div class="book-gallery">
-
-        <div class="book-slide">
-            <img src="./wine-menu/page_1.png" alt="Menu Page 1">
-        </div>
-
-        <div class="book-slide">
-            <img src="./wine-menu/page_2.png" alt="Menu Page 2">
-        </div>
-
-        <div class="book-slide">
-            <img src="./wine-menu/page_3.png" alt="Menu Page 3">
-        </div>
-
-        <div class="book-slide">
-            <img src="./wine-menu/page_4.png" alt="Menu Page 4">
-        </div>
-
-        <div class="book-slide">
-            <img src="./wine-menu/page_5.png"alt="Menu Page 5">
-        </div>
-
-        <div class="book-slide">
-            <img src="./wine-menu/page_6.png" alt="Menu Page 6">
-        </div>
-
-        <div class="book-slide">
-            <img src="./wine-menu/page_7.png" alt="Menu Page 7">
-        </div>
-
-        <div class="book-slide">
-            <img src="./wine-menu/page_8.png" alt="Menu Page 8">
-        </div>
-
-    </div>
-
-</div>
-
-        </div>
-
-    </div>
-</div>
-</div>
   </section>
 
   <!-- =========================
@@ -924,7 +474,93 @@ display: none;
 
   </section>
 
+  <!-- =========================
+       MENU
+  ========================== -->
 
+  <section id="menu">
+
+    <div class="container">
+
+      <div class="section-header">
+
+        <div class="eyebrow">
+          Menu
+        </div>
+
+        <h2 class="section-title">
+          Seasonal dishes crafted with intention.
+        </h2>
+
+      </div>
+
+      <div class="menu-grid">
+
+        <div class="menu-card">
+
+          <h3>Breakfast</h3>
+
+          <div class="menu-item">
+            <div class="menu-top">
+              <span>Dish Name</span>
+              <span>$18</span>
+            </div>
+            <p>Short description of the dish goes here.</p>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-top">
+              <span>Dish Name</span>
+              <span>$22</span>
+            </div>
+            <p>Short description of the dish goes here.</p>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-top">
+              <span>Dish Name</span>
+              <span>$16</span>
+            </div>
+            <p>Short description of the dish goes here.</p>
+          </div>
+
+        </div>
+
+        <div class="menu-card">
+
+          <h3>Dinner</h3>
+
+          <div class="menu-item">
+            <div class="menu-top">
+              <span>Dish Name</span>
+              <span>$32</span>
+            </div>
+            <p>Short description of the dish goes here.</p>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-top">
+              <span>Dish Name</span>
+              <span>$28</span>
+            </div>
+            <p>Short description of the dish goes here.</p>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-top">
+              <span>Dish Name</span>
+              <span>$21</span>
+            </div>
+            <p>Short description of the dish goes here.</p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
 
 
   <!-- =========================
@@ -936,6 +572,25 @@ display: none;
     <div class="container">
 
       <div class="footer-grid">
+
+        <div class="footer-brand">
+
+
+        <img src="./4.jpg" alt="">
+
+
+        </div>
+
+        <div class="footer-col">
+
+          <h4>Navigation</h4>
+
+          <a href="#">Home</a>
+          <a href="#" data-i18n="nav_menu">Meniu</a>
+          <a href="#">About</a>
+          <a href="#">Reservations</a>
+
+        </div>
 
         <div class="footer-col">
 
@@ -1022,30 +677,6 @@ el.textContent=translations[lang][key];
 }
 setLang('ro');
 if(sw){sw.addEventListener('change',e=>setLang(e.target.value));}
-});
-document.querySelectorAll('.book-gallery').forEach(gallery => {
-
-    const slides = gallery.querySelectorAll('.book-slide');
-
-    const wrapper = gallery.closest('.menu-card');
-
-    const currentPage = wrapper.querySelector('.currentPage');
-    const totalPages = wrapper.querySelector('.totalPages');
-    const hint = wrapper.querySelector('.book-swipe-hint');
-
-    totalPages.textContent = slides.length;
-
-    gallery.addEventListener('scroll', () => {
-        const page =
-            Math.round(gallery.scrollLeft / gallery.clientWidth) + 1;
-
-        currentPage.textContent = page;
-    });
-
-    gallery.addEventListener('touchstart', () => {
-        if (hint) hint.style.opacity = '0';
-    }, { once: true });
-
 });
 </script>
 
